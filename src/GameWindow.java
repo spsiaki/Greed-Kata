@@ -7,25 +7,48 @@ import javax.swing.JButton;
 
 import javax.swing.JFrame;
 
+/**
+ * GUI class. Creates a game window that will display the dice
+ * values. Uses buttons to control the state of the game, as well
+ * as an instance of ScoreCalculator to roll the dice and calculate
+ * the score of a given roll.
+ * 
+ * @author Sarah Psiaki
+ * @version 03.24.21
+ *
+ */
 public class GameWindow {
     
+    //Frame that displays the game state
     private JFrame frame;
+    
+    //ScoreCalculator controlling backend of game
     private ScoreCalculator scoreCalc;
+    
+    //JTextField used to display score
     private JTextField score;
 
+    /**
+     * Sets up the frame and buttons used to visualize 
+     * the game and create a user interface.
+     * 
+     * @param calc ScoreCalculator object, runs the backend
+     * of the game.
+     */
     public GameWindow(ScoreCalculator calc)
     {
         
         scoreCalc = calc;
+        
         frame = new JFrame("Greed Kata");
+        
         score = new JTextField();
         
         JButton rollButton = new JButton("Roll");
-        
         JButton quitButton = new JButton("Quit");
         
+        //Sets actions of buttons
         rollButton.addActionListener(e -> roll());
-        
         quitButton.addActionListener(e -> frame.dispose());
         
         
@@ -38,7 +61,7 @@ public class GameWindow {
         
         frame.getContentPane().add(buttonPanel, BorderLayout.SOUTH);
         
-        
+        //Updates frame
         frame.setVisible(true);
         
         frame.setSize(500, 400);
@@ -65,6 +88,7 @@ public class GameWindow {
         
         frame.getContentPane().add(score, BorderLayout.NORTH);
         
+        //Updates frame
         frame.setVisible(true);
         
     }

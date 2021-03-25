@@ -1,15 +1,24 @@
 
-import java.util.Random;
+import junit.framework.*;
 
-public class ScoreCalculatorTest extends student.TestCase {
+/**
+ * Test class for the methods of the ScoreCalculator class. 
+ * 
+ * @author Sarah Psiaki
+ * 
+ * @version 03.24.21
+ *
+ */
+public class ScoreCalculatorTest extends TestCase {
 
     private ScoreCalculator calc;
-    private Random rand;
     
+    /**
+     * Sets up initial conditions for each test method
+     */
     public void setUp()
     {
         calc = new ScoreCalculator();
-        rand = new Random();
     }
     
     /**
