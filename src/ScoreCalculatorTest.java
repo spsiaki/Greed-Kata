@@ -1,45 +1,50 @@
 
+import java.util.Random;
+
 public class ScoreCalculatorTest extends student.TestCase {
 
-    
     private ScoreCalculator calc;
+    private Random rand;
     
     public void setUp()
     {
-        int[] rolls = {1,1,1,5,1};
-        calc = new ScoreCalculator(rolls);
+        calc = new ScoreCalculator();
+        rand = new Random();
     }
     
+    /**
+     * Tests the roll method by asserting that
+     * each die value is always in between 1
+     * and 6 inclusive.
+     */
+    public void testRoll()
+    {
+        int[] diceVals = calc.roll();
+        
+        for (int i = 0; i < diceVals.length; i++)
+        {
+            assertTrue(diceVals[i] <= 6);
+            assertTrue(diceVals[i] >= 1);
+        }
+    }
+    
+    /**
+     * Tests the findBestScore method by confirming
+     * that the score is always in the expected range
+     * and always divisible by 50.
+     */
     public void testFindBestScore()
     {
-        assertEquals(2050, calc.findBestScore());
-        
-        int[] rolls2 = {2,3,4,6,2};
-        ScoreCalculator calc2 = new ScoreCalculator(rolls2);
-        
-        assertEquals(0, calc2.findBestScore());
-        
-        int[] rolls3 = {3,4,5,3,3};
-        ScoreCalculator calc3 = new ScoreCalculator(rolls3);
-        
-        assertEquals(350, calc3.findBestScore());
-        
-        int[] rolls4 = {1,5,1,2,4};
-        ScoreCalculator calc4 = new ScoreCalculator(rolls4);
-        
-        assertEquals(250, calc4.findBestScore());
-        
-        int[] rolls5 = {5,5,5,5,5};
-        ScoreCalculator calc5 = new ScoreCalculator(rolls5);
-        
-        assertEquals(2000, calc5.findBestScore());
-        
-        int[] rolls6 = {2, 3, 4, 5, 1};
-        ScoreCalculator calc6 = new ScoreCalculator(rolls6);
-        
-        assertEquals(1200, calc6.findBestScore());
-        
-        
+        for (int i = 0; i < 20; i++)
+        {
+            calc.roll();
+            
+            int score = calc.findBestScore();
+            
+            assertTrue(score <= 1200);
+            assertTrue(score >= 0);
+            assertEquals(score%50, 0);
+        }
     }
     
     
