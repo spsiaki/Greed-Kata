@@ -2,7 +2,7 @@
 
 Questions:
 - Does the game have a winning state or is it simply played as many times as desired?
-- When considering the extra credit, does order matter for straight?
+- When considering the extra credit, does order matter for a straight?
 
 Assumptions made:
 - The dice represent a list of unordered integers.
